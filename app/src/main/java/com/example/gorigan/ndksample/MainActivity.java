@@ -1,9 +1,13 @@
 package com.example.gorigan.ndksample;
+import org.opencv.*;
+import org.opencv.core.Core;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -19,6 +23,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         TextView tv = (TextView) findViewById(R.id.myTextView);
         tv.setText(getStringFromNative());
+        tv.setText(tv.getText() + " with OpenCV Version");
     }
 
 
@@ -45,4 +50,10 @@ public class MainActivity extends Activity {
     }
 
     public native String getStringFromNative() ;
+
+    public void sendMessage (View view )
+    {
+        Intent intent = new Intent(this, CameraCalibrationActivity.class);
+        startActivity(intent);
+    }
 }
